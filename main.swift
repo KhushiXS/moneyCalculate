@@ -1,4 +1,6 @@
-﻿import Foundation
+
+import Foundation
+
 var money:String = "5000"
 var moneyDecimal = Decimal(string:money)
 let aLine:String = "--------------------------------------------------------"
@@ -7,8 +9,13 @@ print("Are you a govement job ? Y/N")
 let job = readLine()
 if(job == "Y"){
     print("You are a govementer")
-    print("Please enter the money you get for one month:")
-    let moneyOneMonth = readLine()
+    
+    var moneyOneMonthStr:String
+    repeat{
+        print("Please enter the money you get for one month:")
+        moneyOneMonthStr = readLine()!
+    }while moneyOneMonthStr.isEmpty
+    let moneyOneMonth:Int! = Int(moneyOneMonthStr)
     
     // age_get
     print("Please enter your age:")
@@ -20,6 +27,7 @@ if(job == "Y"){
     
     // sex_get
     let sex = sexGet()
+    
     if(sex == "man"){
         print("You are a man,and you retired age is 60")
         retiredAge = 60
@@ -27,6 +35,7 @@ if(job == "Y"){
         print("You are a woman,and you retired age is 50")
         retiredAge = 50
     }
+    
     var workage = retiredAge - age
     
     // the money add
@@ -37,9 +46,30 @@ if(job == "Y"){
     print("If your job is 13 salary,please enter '1',")
     print("If your job is year-end bonus,please enter '2',")
     print("If your job is 13 salary and year-end bonus,please enter '3',")
-    let salaryCalculate:String! = readLine()
+    var salaryCalculate:String! = readLine()
+    while true
+    {
+        if(salaryCalculate == "1"){
+            print("Your job is 13 salary.")
+            break
+        }else if(salaryCalculate == "2"){
+            print("Your job is year-end bonus.")
+            break
+        }else if(salaryCalculate == "3"){
+            print("Your job is 13 salary and year-end bonus.")
+            break
+        }else{
+            print("Please enter the right key")
+            salaryCalculate = readLine()
+        }
+    }
     
+    print("Please enter the maximum salary you expect to reach:")
+    let maxSalary:Int! = Int(readLine()!)
+    print("The maximum salary you will reach is \(maxSalary!)")
     
+    var moneyLife = Decimal(workage) * Decimal(moneyOneMonth) * 12
+    print("You will make \(moneyLife) in your life time!")
     
 }
 
@@ -50,7 +80,7 @@ if(job == "Y"){
 func sexGet() -> String{
     var thisSex:String = ""
     //var index = 10
-    while thisSex != "man" 
+    while thisSex != "man"
     {
         print("Please enter your sex:")
         thisSex = readLine()!
@@ -61,5 +91,3 @@ func sexGet() -> String{
     }
     return(thisSex)
 }
-
-
