@@ -15,7 +15,7 @@ if(job == "Y"){
         print("Please enter the money you get for one month:")
         moneyOneMonthStr = readLine()!
     }while moneyOneMonthStr.isEmpty
-    let moneyOneMonth:Int! = Int(moneyOneMonthStr)
+    var moneyOneMonth:Int! = Int(moneyOneMonthStr)
     
     // age_get
     print("Please enter your age:")
@@ -69,7 +69,18 @@ if(job == "Y"){
     print("The maximum salary you will reach is \(maxSalary!)")
     
     var moneyLife = Decimal(workage) * Decimal(moneyOneMonth) * 12
-    print("You will make \(moneyLife) in your life time!")
+    var i:Int = age
+    var sum = Decimal(0)
+    while age <= retiredAge
+    {
+        i += 1
+        sum = sum +  Decimal(moneyOneMonth) * 12
+        if(moneyOneMonth < moneyGrowth){
+            moneyOneMonth = moneyOneMonth + moneyGrowth
+        }
+    }
+    
+    print("You will make \(sum) in your life time!")
     
 }
 
