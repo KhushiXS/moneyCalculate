@@ -90,7 +90,7 @@ let aLine:String = "--------------------------------------------------------"
  *  @return String
  */
 func civilServant() -> String {
-    let job = scanOutIn("Are you a civil servant ? Y/N")
+    var job = scanOutIn(scanOutStr:"Are you a civil servant ? Y/N")
     while true
     {
         if(job == "Y"){
@@ -101,7 +101,7 @@ func civilServant() -> String {
              break
           }else{
               print("Please enter the right key !")
-              job = scanOutIn("Are you a civil servant ? Y/N")
+              job = scanOutIn(scanOutStr:"Are you a civil servant ? Y/N")
           }
     }
 }
@@ -115,8 +115,8 @@ func scanOutIn(scanOutStr:String) -> String{
     let scanInStr:String
     repeat{
         print(scanOutStr)
-        scanInStr = readLine()
-    }while scanInStr.isEmpty()
+        scanInStr = readLine()!
+    }while scanInStr.isEmpty
     return scanInStr
 }
 
