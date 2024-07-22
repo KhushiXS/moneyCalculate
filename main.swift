@@ -5,18 +5,7 @@ var money:String = "5000"
 var moneyDecimal = Decimal(string:money)
 let aLine:String = "--------------------------------------------------------"
 
-print("Are you a govement job ? Y/N")
-let job = readLine()
-if(job == "Y"){
-    print("You are a govementer")
-    
-    var moneyOneMonthStr:String
-    repeat{
-        print("Please enter the money you get for one month:")
-        moneyOneMonthStr = readLine()!
-    }while moneyOneMonthStr.isEmpty
-    var moneyOneMonth:Int! = Int(moneyOneMonthStr)
-    
+
     // age_get
     print("Please enter your age:")
     let ageString:String! = readLine()
@@ -37,6 +26,15 @@ if(job == "Y"){
     }
     
     var workage = retiredAge - age
+
+    
+    var moneyOneMonthStr:String
+    repeat{
+        print("Please enter the money you get for one month:")
+        moneyOneMonthStr = readLine()!
+    }while moneyOneMonthStr.isEmpty
+    var moneyOneMonth:Int! = Int(moneyOneMonthStr)
+    
     
     // the money add
     print("Please enter the value of salary growth for one year:")
@@ -82,7 +80,46 @@ if(job == "Y"){
     
     print("You will make \(sum) in your life time!")
     
+
+
+
+
+
+
+/** civilServant
+ *  @return String
+ */
+func civilServant() -> String {
+    let job = scanOutIn("Are you a civil servant ? Y/N")
+    while true
+    {
+        if(job == "Y"){
+             print("You are a civil servant.")
+              break
+         }else if(job == "N"){
+             print("You are a private employee.")
+             break
+          }else{
+              print("Please enter the right key !")
+              job = scanOutIn("Are you a civil servant ? Y/N")
+          }
+    }
 }
+
+
+/** scanOutIn
+ *  @param scanOutStr:String
+ *  @return String
+ */
+func scanOutIn(scanOutStr:String) -> String{
+    let scanInStr:String
+    repeat{
+        print(scanOutStr)
+        scanInStr = readLine()
+    }while scanInStr.isEmpty()
+    return scanInStr
+}
+
 
 
 /** sex get
